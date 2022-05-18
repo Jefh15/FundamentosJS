@@ -13,7 +13,7 @@ const obtenerPokemones = async() => {
     const data = await respuesta.json()
     
     //recorro el array y devuelve la propiedad (name) de pokemon
-    const arrayNombresPokemon = data.results.map(pokemon => console.log(pokemon.name) ) // recorro el array de pokemones
+    const arrayNombresPokemon = data.results.map(pokemon => pokemon.name ) // recorro el array de pokemones
     console.log(arrayNombresPokemon)
     
   } catch (error) {
