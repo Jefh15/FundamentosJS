@@ -1,0 +1,31 @@
+// metodo que crea un nuevo array para visualizar los elementos
+// ---------------AHORA SE USA ASI ----------------------
+//ASYNC Y AWAIT -> es una funcion de flecha
+const obtenerPokemones = async() => {
+  // siempre para poder capturar los errores en mi promesa es usar try y catch
+  try {
+  
+    //intenta hacer esto
+    // esperemos esta peticion
+    const respuesta = await fetch('https://pokeapi.co/api/v2/pokemon/')
+    // esta respuesta tranformela a formato JSON
+    const data = await respuesta.json()
+    
+    //recorro el array y lo filtro por la propiedad que deseo mostrar
+    // quiero filtrar por el pokemon que sea de nombre bulbasaur
+    const arrayNombresPokemonIgualaBulbasaur = data.results.filter(pokemon => pokemon.name === 'bulbasaur' ) // recorro el array de pokemones
+    console.log(arrayNombresPokemonIgualaBulbasaur)
+    
+    // pero si quiero quitar un elemento de mi array ejemplo quiero quitar de mi array a bulbasaur hago esto
+    const arrayNombresPokemonSinBulbasaur = data.results.filter(pokemon => pokemon.name !== 'bulbasaur' ) // recorro el array de pokemones
+    console.log(arrayNombresPokemonSinBulbasaur)
+    
+  } catch (error) {
+    //de lo contrario
+    //capturo mi error
+    console.log(error)
+  }
+  
+  //para ver el resultado debemos de llamar la funcion
+  obtenerPokemones()
+}
