@@ -1,0 +1,27 @@
+// metodo que crea un nuevo array para visualizar los elementos
+
+// ---------------AHORA SE USA ASI ----------------------
+
+//ASYNC Y AWAIT -> es una funcion de flecha
+const obtenerPokemones = async() => {
+  // siempre para poder capturar los errores en mi promesa es usar try y catch
+  try {
+    //intenta hacer esto
+    // esperemos esta peticion
+    const respuesta = await fetch('https://pokeapi.co/api/v2/pokemon/')
+    // esta respuesta tranformela a formato JSON
+    const data = await respuesta.json()
+    
+    //recorro el array y devuelve la propiedad (name) de pokemon
+    const arrayNombresPokemon = data.results.map(pokemon => console.log(pokemon.name) ) // recorro el array de pokemones
+    console.log(arrayNombresPokemon)
+    
+  } catch (error) {
+    //de lo contrario
+    //capturo mi error
+    console.log(error)
+  }
+  
+  //para ver el resultado debemos de llamar la funcion
+  obtenerPokemones()
+}
